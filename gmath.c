@@ -53,11 +53,23 @@ color calculate_diffuse(double light[2][3], double *dreflect, double *normal ) {
 color calculate_specular(double light[2][3], double *sreflect, double *view, double *normal ) {
   color s;
 
-  double t = dot_product(light[LOCATION], normal);
-  
-  s.red = 0;
-  s.green = 0;
-  s.blue = 0;
+  double *t = (double *)malloc(3 * sizeof(double));
+  int i;
+  for(i = 0; i < 3; i++)
+    t[i] = dot_product(light[LOCATION], normal) * normal[i];
+
+  double *r = (double *)malloc(3 * sizeof(double));
+  for(i = 0; i < 3; i++)
+    r[i] = 2*t[i] - light[LOCATION][i];
+
+  double cosalpha = dot_product(r, view);
+
+  s.red = pow(light[COLOR][RED] * sreflect[RED] * cosalpha,16);
+  s.green = pow(light[COLOR][GREEN] * sreflect[GREEN] * cosalpha,16);
+  s.blue = pow(light[COLOR][BLUE] * sreflect[BLUE] * cosalpha,16);
+    
+  free(t);
+  free(r);
   
   return s;
 }
