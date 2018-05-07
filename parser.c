@@ -111,7 +111,7 @@ void parse_file ( char * filename,
     char axis;
     int type;
     int step = 100;
-    int step_3d = 50;
+    int step_3d = 70;
 
     if ( strncmp(line, "push", strlen(line)) == 0 ) {
       //printf("PUSH\b");
