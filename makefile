@@ -5,9 +5,10 @@ CC= gcc
 
 all: $(OBJECTS)
 	$(CC) -o main $(OBJECTS) $(LDFLAGS)
+	./main pic
 
 main.o: main.c display.h draw.h ml6.h matrix.h parser.h
-	$(CC) -c pic
+	$(CC) -c main.o
 
 draw.o: draw.c draw.h display.h ml6.h matrix.h gmath.h
 	$(CC) $(CFLAGS) -c draw.c
@@ -28,7 +29,7 @@ stack.o: stack.c stack.h matrix.h
 	$(CC) $(CFLAGS) -c stack.c
 
 run: all
-	./main script
+	./main pic
 
 clean:
 	rm *.o *~
