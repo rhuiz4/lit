@@ -9,44 +9,90 @@
 //lighting functions
 color get_lighting( double *normal, double *view, color alight, double light[2][3], double *areflect, double *dreflect, double *sreflect) {
   color i;
+  
+  normalize(light[LOCATION]);
+  normalize(normal);
+  normalize(view);
+  
+  color a = calculate_ambient(alight,areflect);
+  color d = calculate_diffuse(light,dreflect,normal);
+  color s = calculate_specular(light,sreflect,view,normal);
+
+  i.red = a.red + d.red + s.red;
+  i.green = a.green + d.green + s.green;
+  i.blue = a.blue + d.blue + s.blue;
+  limit_color(&i);
+
   return i;
 }
 
 color calculate_ambient(color alight, double *areflect ) {
   color a;
+  a.red = alight.red * areflect[RED];
+  a.green = alight.green * areflect[GREEN];
+  a.blue = alight.blue * areflect[BLUE];
+  limit_color(&a);
+
+  
   return a;
 }
 
 color calculate_diffuse(double light[2][3], double *dreflect, double *normal ) {
   color d;
+  
+  double dp = dot_product(light[LOCATION], normal);
+
+  d.red = light[COLOR][RED] * dreflect[RED] * dp;
+  d.green = light[COLOR][GREEN] * dreflect[GREEN] * dp;
+  d.blue = light[COLOR][BLUE] * dreflect[BLUE] * dp;
+  limit_color(&d);
+  
   return d;
 }
 
 color calculate_specular(double light[2][3], double *sreflect, double *view, double *normal ) {
-
   color s;
+
+  double t = dot_product(light[LOCATION], normal);
+  
+  s.red = 0;
+  s.green = 0;
+  s.blue = 0;
+  
   return s;
 }
 
 
 //limit each component of c to a max of 255
 void limit_color( color * c ) {
-  if (c.red > 255)
-    c.red = 255;
-  if (c.green > 255)
-    c.red = 255;
-  if (c.blue > 255)
-    c.red = 255;
+  if (c->red > 255)
+    c->red = 255;
+  if (c->green > 255)
+    c->red = 255;
+  if (c->blue > 255)
+    c->red = 255;
+  if (c->red < 0)
+    c->red = 0;
+  if (c->green < 0)
+    c->red = 0;
+  if (c->blue < 0)
+    c->red = 0;
 }
 
 //vector functions
 //normalize vetor, should modify the parameter
 void normalize( double *vector ) {
+  double tmp = sqrt(pow(vector[0], 2) + pow(vector[1],2) + pow(vector[2], 2));
+  int i = 0;
+  while (i < 3){
+    vector[i] = vector[i] / tmp;
+    i++;
+  }
 }
 
 //Return the dot porduct of a . b
 double dot_product( double *a, double *b ) {
-  return 0;
+  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
 
 double *calculate_normal(struct matrix *polygons, int i) {
