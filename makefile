@@ -8,7 +8,7 @@ all: $(OBJECTS)
 	./main pic
 
 main.o: main.c display.h draw.h ml6.h matrix.h parser.h
-	$(CC) -c main.o
+	$(CC) -c main.c
 
 draw.o: draw.c draw.h display.h ml6.h matrix.h gmath.h
 	$(CC) $(CFLAGS) -c draw.c
