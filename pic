@@ -1,0 +1,221 @@
+#ROBOT
+#BODY
+push
+move
+250 250 0
+rotate
+y -30
+box
+-100 125 50 200 250 100
+#HEAD
+push
+move
+0 175 0
+rotate
+y 90
+sphere
+0 0 0 50
+pop
+#LEFT ARM
+push
+move
+-100 125 0
+rotate
+x -45
+box
+-40 0 40 40 100 80
+#LEFT LOWER ARM
+push
+move
+-20 -100 0
+box
+-10 0 10 20 125 20
+pop
+pop
+#RIGHT ARM
+push
+move
+100 125 0
+rotate
+x -45
+box
+0 0 40 40 100 80
+#RIGHT LOWER ARM
+push
+move
+20 -100 0
+rotate
+x -20
+box
+-10 0 10 20 125 20
+pop
+pop
+#LEFT LEG
+push
+move
+-100 -125 0
+box
+0 0 40 50 120 80
+pop
+#RIGHT LEG
+push
+move
+100 -125 0
+box
+-50 0 40 50 120 80
+pop
+pop
+#BADMINTON
+#HEAD
+push
+move
+150 360 500
+scale
+0.5 0.5 1
+rotate
+x 90
+rotate
+y 45
+scale
+1 1 1.2
+torus
+0 0 -130 5 90
+#sphere
+#0 0 -130 90
+#NECK
+push
+move
+-4 0 210
+box
+0 0 0 8 8 250
+#HANDLE
+push
+move
+-4 0 80
+box
+0 0 0 14 14 80
+#BIRDIE
+pop
+pop
+pop
+push
+move
+65 180 500
+scale
+0.75 -0.75 1
+sphere
+0 0 0 10
+push
+move
+-10 -25 0
+rotate
+x 90
+rotate
+y -20
+rotate
+z -80
+torus
+0 0 0 2 20
+pop
+push
+move
+0 -25 0
+rotate
+x 90
+rotate
+z -80
+torus
+0 0 0 2 20
+pop
+push
+move
+10 -25 0
+rotate
+x 90
+rotate
+y 20
+rotate
+z -80
+torus
+0 0 0 2 20
+pop
+pop
+#STRINGS
+push
+move
+150 360 500
+scale
+0.5 0.5 0
+rotate
+z 45
+#HORIZONTAL
+line
+-45 70 0 45 70 0
+line
+-55 80 0 55 80 0
+line
+-65 90 0 65 90 0
+line
+-75 100 0 75 100 0
+line
+-85 110 0 85 110 0
+line
+-85 120 0 85 120 0
+line
+-90 130 0 90 130 0
+line
+-90 140 0 90 140 0
+line
+-90 150 0 90 150 0
+line
+-90 160 0 90 160 0
+line
+-90 170 0 90 170 0
+line
+-90 180 0 90 180 0
+line
+-90 190 0 90 190 0
+line
+-80 200 0 80 200 0
+line
+-80 210 0 80 210 0
+line
+-70 220 0 70 220 0
+line
+-70 230 0 70 230 0
+line
+-60 240 0 60 240 0
+#VERTICA
+line
+-70 90 0 -70 210 0
+line
+-60 80 0 -60 230 0
+line
+-50 70 0 -50 240 0
+line
+-40 60 0 -40 250 0
+line
+-30 50 0 -30 250 0
+line
+-20 50 0 -20 260 0
+line
+-10 50 0 -10 270 0
+line
+0 50 0 0 270 0
+line
+10 50 0 10 270 0
+line
+20 50 0 20 260 0
+line
+30 60 0 30 250 0
+line
+40 70 0 40 250 0
+line
+50 80 0 50 240 0
+line
+60 90 0 60 230 0
+line
+70 90 0 70 210 0
+display
+save
+bad.png
