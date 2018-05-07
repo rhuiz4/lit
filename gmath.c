@@ -70,9 +70,9 @@ color calculate_specular(double light[2][3], double *sreflect, double *view, dou
     s.blue = 0;
   }
   else{
-    s.red = light[COLOR][RED] * sreflect[RED] * pow(cosalpha,16);
-    s.green = light[COLOR][GREEN] * sreflect[GREEN] * pow(cosalpha,16);
-    s.blue = light[COLOR][BLUE] * sreflect[BLUE] * pow(cosalpha,16);
+    s.red = light[COLOR][RED] * sreflect[RED] * pow(cosalpha,6);
+    s.green = light[COLOR][GREEN] * sreflect[GREEN] * pow(cosalpha,6);
+    s.blue = light[COLOR][BLUE] * sreflect[BLUE] * pow(cosalpha,6);
   }
   free(t);
   free(r);
