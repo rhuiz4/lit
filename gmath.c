@@ -63,10 +63,15 @@ color calculate_specular(double light[2][3], double *sreflect, double *view, dou
     r[i] = 2*t[i] - light[LOCATION][i];
 
   double cosalpha = dot_product(r, view);
-
+  
+  /*
   s.red = pow(light[COLOR][RED] * sreflect[RED] * cosalpha,1);
   s.green = pow(light[COLOR][GREEN] * sreflect[GREEN] * cosalpha,1);
   s.blue = pow(light[COLOR][BLUE] * sreflect[BLUE] * cosalpha,1);
+  */
+  s.red = light[COLOR][RED] * sreflect[RED] * pow(cosalpha,1);
+  s.green = light[COLOR][GREEN] * sreflect[GREEN] * pow(cosalpha,1);
+  s.blue = light[COLOR][BLUE] * sreflect[BLUE] * pow(cosalpha,1);
     
   free(t);
   free(r);
